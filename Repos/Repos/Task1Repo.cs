@@ -15,7 +15,7 @@ namespace Repos.Repos
         public Task1Repo(Apppdbcontext context) : base(context)
         {
         }
-        public async Task<List<Task1>> GetTasksAsync(
+        public async Task<IEnumerable<Task1>> GetTasksAsync(
        Task1Status? status = null,
        string searchTitle = null,
        int page = 1,
@@ -44,18 +44,20 @@ namespace Repos.Repos
             return  query.ToList();
         }
 
+
+
         // Optional: get total task count with filters (for pagination UI)
-        //public async Task<int> GetTotalTaskCountAsync(TaskStatus? status = null, string searchTitle = null)
-        //{
-        //    var query =await GetAll();
+        public async Task<int> GetTotalTaskCountAsync(Task1Status? status = null, string? searchTitle = null)
+        {
+            var query = await GetAll();
 
-        //    if (status.HasValue)
-        //        query = query.Where(t => t.Status==status.Value);
+            if (status.HasValue)
+                query = query.Where(t => t.Status == status.Value);
 
-        //    if (!string.IsNullOrEmpty(searchTitle))
-        //        query = query.Where(t => t.Title.Contains(searchTitle));
+            if (!string.IsNullOrEmpty(searchTitle))
+                query = query.Where(t => t.Title.Contains(searchTitle));
 
-        //    return await query.CountAsync();
-        //}
+            return  query.Count();
+        }
     }
 }

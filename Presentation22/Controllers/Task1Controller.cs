@@ -24,14 +24,18 @@ namespace Presentation22.Controllers
       [FromQuery] int pageSize = 10)
         {
             var tasks = await taskRepo.GetTasksAsync(status, searchTitle, page, pageSize);
+            int count = await taskRepo.GetTotalTaskCountAsync(status, searchTitle);
+            var tasks2 =new displaytask1
+            {
+                data=tasks,
+                page=page,
+                pagesize=pageSize,
+                count=count
+
+            };
            
 
-            return Ok(new
-            {
-                Data = tasks,
-                Page = page,
-                PageSize = pageSize
-            });
+            return Ok(tasks2);
         }
 
         [HttpPost("Add")]
