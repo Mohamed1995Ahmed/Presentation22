@@ -41,8 +41,8 @@ namespace Presentation22.Controllers
                 Title = task1.Title,
                 Description= task1.Description,
                 DueDate = task1.DueDate,
-                Status= task1.Status, 
-                PriorityLevel=task1.p
+                Status= Task1Status.New, 
+                PriorityLevel=PriorityLevel.Low
                 
 
             

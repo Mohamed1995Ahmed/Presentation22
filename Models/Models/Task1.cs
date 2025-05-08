@@ -18,7 +18,7 @@ namespace Models.Models
         public string Description { get; set; }
         public DateTime DueDate { get; set; }
         public Task1Status Status { get; set; }
-        public PriorityLevel PriorityLevel { get; set; } = PriorityLevel.Low;
+        public PriorityLevel PriorityLevel { get; set; }
 
     }
     
