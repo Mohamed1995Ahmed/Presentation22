@@ -20,7 +20,7 @@ namespace Presentation22
                 }
                 
                 );
-            builder.Services.AddScoped<ITask1,Task1Repo>();
+            builder.Services.AddScoped<ITask1,Task22Repo>();
             builder.Services.AddCors(option =>
             {
                 option.AddPolicy("mycors", policy =>
